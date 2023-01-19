@@ -39,9 +39,16 @@ if __name__ == "__main__":
     yesterday = (date.today() - timedelta(1)).strftime('%Y-%m-%d')
     team = ['dhalsdl12', 'seokiis', 'shgusgh12', 'wns0865']
     url = 'https://github.com/'
-    driver = 'C:\\Users\\dhals\\Downloads\\chromedriver.exe'
+    
+    chrome_driver = os.path.join('chromedriver')
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument('--disable-gpu')
 
-    drive = webdriver.Chrome(driver)
+    drive = webdriver.Chrome(chrome_driver, options=chrome_options)
+    
     for i in range(4):
         drive.get(url+team[i])
         pageCrawl()
