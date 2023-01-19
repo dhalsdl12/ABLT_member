@@ -42,6 +42,7 @@ if __name__ == "__main__":
     yesterday = (date.today() - timedelta(1)).strftime('%Y-%m-%d')
     team = ['dhalsdl12', 'seokiis', 'shgusgh12', 'wns0865']
     penalty = ['', '', '', '']
+    commits = []
     url = 'https://github.com/'
     
     chrome_driver = os.path.join('chromedriver')
