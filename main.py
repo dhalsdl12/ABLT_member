@@ -65,7 +65,7 @@ if __name__ == "__main__":
     drive.close()
     
     
-    issue_title = f"({yesterday}) github commit 했어?"
+    issue_title = f"어제({yesterday}) github commit 했어?"
     upload_contents = extract_commit_data()
     repo = get_github_repo(access_token, repository_name)
     upload_github_issue(repo, issue_title, upload_contents)
