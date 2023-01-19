@@ -1,3 +1,4 @@
+import os
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from datetime import date, timedelta
@@ -12,7 +13,7 @@ def extract_commit_data():
         name = team[i]
         commit = commits[i]
         content = f"<a href={url}>" + name + "</a>" + "<br/>"
-        content += "<blockquote data-ke-style=\"style2\">" + commit + "</blockquote><br/>\n"
+        content += "<blockquote data-ke-style=\"style2\">" + commit + "<br>" + penalty + "</blockquote><br/>\n"
         upload_contents += content
 
     return upload_contents
@@ -28,7 +29,9 @@ def pageCrawl():
         d = a.attrs['data-date']
         if d == yesterday:
             commit = a.text.split()[0]
-            commits.append(str(d) + ' : ' + str(commit))
+            commits.append(str(d) + ' : ' + commit)
+            if commit == 'no':
+                penalty = '3000원'
 
 
 if __name__ == "__main__":
@@ -38,6 +41,7 @@ if __name__ == "__main__":
     now = date.today()
     yesterday = (date.today() - timedelta(1)).strftime('%Y-%m-%d')
     team = ['dhalsdl12', 'seokiis', 'shgusgh12', 'wns0865']
+    penalty = ['', '', '', '']
     url = 'https://github.com/'
     
     chrome_driver = os.path.join('chromedriver')
