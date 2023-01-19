@@ -12,8 +12,9 @@ def extract_commit_data():
         link = '\"' + url + team[i] + '\"'
         name = team[i]
         commit = commits[i]
+        penal = penalty[i]
         content = f"<a href={link}>" + name + "</a>" + "<br/>"
-        content += "<blockquote data-ke-style=\"style2\">" + commit + "<br> 벌금 : " + penalty + "</blockquote><br/>\n"
+        content += "<blockquote data-ke-style=\"style2\">" + commit + "<br> 벌금 : " + penal + "</blockquote><br/>\n"
         upload_contents += content
 
     return upload_contents
