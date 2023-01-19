@@ -32,7 +32,7 @@ def pageCrawl():
             commit = a.text.split()[0]
             commits.append(str(d) + ' : ' + commit)
             if commit == 'No':
-                penalty = '경고! 벌금 3000원...'
+                penalty[i] = '경고! 벌금 3000원...'
 
 
 if __name__ == "__main__":
