@@ -14,7 +14,7 @@ def extract_commit_data():
         commit = commits[i]
         penal = penalty[i]
         content = f"<a href={link}>" + name + "</a>" + "<br/>"
-        content += "<blockquote data-ke-style=\"style2\">" + commit + "<br> 벌금 : " + penal + "</blockquote><br/>\n"
+        content += "<blockquote data-ke-style=\"style2\">" + commit + "<br>" + penal + "</blockquote><br/>"
         upload_contents += content
 
     return upload_contents
@@ -32,7 +32,7 @@ def pageCrawl():
             commit = a.text.split()[0]
             commits.append(str(d) + ' : ' + commit)
             if commit == 'No':
-                penalty = '3000원'
+                penalty = '경고! 벌금 3000원...'
 
 
 if __name__ == "__main__":
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     now = date.today()
     yesterday = (date.today() - timedelta(1)).strftime('%Y-%m-%d')
     team = ['dhalsdl12', 'seokiis', 'shgusgh12', 'wns0865']
-    penalty = ['0원', '0원', '0원', '0원']
+    penalty = ['참 잘했어요!', '참 잘했어요!', '참 잘했어요!', '참 잘했어요!']
     commits = []
     url = 'https://github.com/'
     
