@@ -32,7 +32,7 @@ def pageCrawl():
             commit = a.text.split()[0]
             commits.append(str(d) + ' : ' + commit)
             if commit == 'No':
-                penalty[i] = '경고! 벌금 3000원...'
+                penalty[i] = '경고! 공부하세요...'
 
 
 if __name__ == "__main__":
@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
     drive = webdriver.Chrome(chrome_driver, options=chrome_options)
     
-    for i in range(4):
+    for i in range(5):
         drive.get(url+team[i])
         pageCrawl()
 
