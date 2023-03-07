@@ -42,7 +42,7 @@ if __name__ == "__main__":
     
     now = date.today()
     yesterday = (date.today() - timedelta(1)).strftime('%Y-%m-%d')
-    team = ['dhalsdl12', 'seokiis', 'shgusgh12', 'wns0865', 'Sion99']
+    team = ['dhalsdl12', 'seokiis', 'shgusgh12', 'Sion99', 'wns0865']
     penalty = ['참 잘했어요!', '참 잘했어요!', '참 잘했어요!', '참 잘했어요!', '참 잘했어요!']
     commits = []
     url = 'https://github.com/'
