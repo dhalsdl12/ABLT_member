@@ -25,6 +25,7 @@ def pageCrawl():
     soup = BeautifulSoup(html, 'html.parser')
 
     category = soup.select('svg > g > g > rect')
+    # //*[@id="user-profile-frame"]/div/div[3]/div[1]/div/div/div/div[1]/table/tbody/tr[3]/td[54]
 
     for a in category:
         d = a.attrs['data-date']
