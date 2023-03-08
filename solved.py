@@ -12,7 +12,7 @@ def extract_commit_data():
     upload_contents = ''
 
     for i in range(len(member)):
-        link = '\"' + url + 'profile' + member[i] + '\"'
+        link = '\"' + url + member[i] + '\"'
         name = names[i]
         st = streak[i]
         content = f"<a href={link}>" + name + "</a>" + "<br/>"
