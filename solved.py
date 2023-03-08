@@ -13,7 +13,7 @@ def extract_commit_data():
 
     for i in range(len(member)):
         link = '\"' + url + 'profile' + member[i] + '\"'
-        name = name[i]
+        name = names[i]
         st = streak[i]
         content = f"<a href={link}>" + name + "</a>" + "<br/>"
         content += "<blockquote data-ke-style=\"style2\">" + st + "</blockquote><br/>"
@@ -45,7 +45,7 @@ if __name__ == "__main__":
     url = 'https://solved.ac/'
     driver.get(url)
     member = ['dhalsdl12','shgusgh12', 'shinsion', 'wns0865']
-    name = ['권오민', '노현호', '신시온', '이준형']
+    names = ['권오민', '노현호', '신시온', '이준형']
     streak = ['현재 0일', '현재 0일', '현재 0일', '현재 0일', '현재 0일']
 
     for i in range(len(member)):
