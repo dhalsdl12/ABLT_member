@@ -63,7 +63,7 @@ if __name__ == "__main__":
         
         solved = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div/div[4]/div[1]/div[2]/div/div/div').text
         day = int(driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div/div[4]/div[1]/div[2]/div/div/div/b').text)
-        print(name[i], solved)
+        print(names[i], solved)
         if day == 0:
             streak[i] = streak[i] + '  벌금입니다.'
         else:
