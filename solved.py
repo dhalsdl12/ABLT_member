@@ -16,8 +16,9 @@ def extract_commit_data():
         name = names[i]
         st = streak[i]
         tier = tiers[i]
-        content = f"<a href={link}>" + name + "    " + tier + "</a>" + "<br/>"
-        content += "<blockquote data-ke-style=\"style2\">" + st + "</blockquote><br/>"
+        rank = ranks[i]
+        content = f"<a href={link}>" + name + "    " + "</a>" + tier + "<br/>"
+        content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등</blockquote><br/>"
         upload_contents += content
 
     return upload_contents
@@ -49,6 +50,7 @@ if __name__ == "__main__":
     names = ['권오민', '노현호', '신시온', '이준형']
     streak = ['현재 0일', '현재 0일', '현재 0일', '현재 0일', '현재 0일']
     tiers = []
+    ranks = []
     for i in range(len(member)):
         driver.get(url + member[i])
         time.sleep(1)
@@ -66,6 +68,10 @@ if __name__ == "__main__":
         day = int(driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div/div[4]/div[1]/div[2]/div/div/div/b').text)
         tier = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[3]/div[1]/div[4]/span[2]/b').text
         tiers.append(tier)
+        rank = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div/div[2]/div[1]/div[2]/b').text
+        rank = rank[1:]
+        rank = rank.replace(',', '')
+        ranks.append(rank)
         print(names[i], solved)
         if day == 0:
             streak[i] = streak[i] + '  벌금입니다.'
