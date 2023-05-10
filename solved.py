@@ -64,11 +64,11 @@ if __name__ == "__main__":
         # solved = soup.select('svg > text')
         # /html/body/div[1]/div/div[4]/div/div[4]/div[1]/div[2]/div/div/div/b
         
-        solved = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div/div[4]/div[1]/div[2]/div/div/div').text
-        day = int(driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div/div[4]/div[1]/div[2]/div/div/div/b').text)
-        tier = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[3]/div[1]/div[4]/span[2]/b').text
+        solved = driver.find_element(By.XPATH, '//*[@id="__next"]/div[4]/div/div[4]/div[1]/div[2]/div/div/div').text
+        day = int(driver.find_element(By.XPATH, '//*[@id="__next"]/div[4]/div/div[4]/div[1]/div[2]/div/div/div/b').text)
+        tier = driver.find_element(By.XPATH, '//*[@id="__next"]/div[4]/div/div[2]/div[1]/div[1]/div[2]/span').text
         tiers.append(tier)
-        rank = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div/div[2]/div[1]/div[2]/b').text
+        rank = driver.find_element(By.XPATH, '//*[@id="__next"]/div[4]/div/div[2]/div[1]/div[2]/b').text
         rank = rank[1:]
         rank = rank.replace(',', '')
         ranks.append(rank)
