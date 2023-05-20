@@ -46,9 +46,9 @@ if __name__ == "__main__":
 
     url = 'https://solved.ac/'
     driver.get(url)
-    member = ['dhalsdl12','shgusgh12', 'shinsion', 'wns0865']
-    names = ['권오민', '노현호', '신시온', '이준형']
-    streak = ['현재 0일', '현재 0일', '현재 0일', '현재 0일', '현재 0일']
+    member = ['dhalsdl12','shgusgh12', 'shinsion', 'yund', 'wns0865']
+    names = ['권오민', '노현호', '신시온', '여윤동', '이준형']
+    streak = ['현재 0일', '현재 0일', '현재 0일', '현재 0일', '현재 0일', '현재 0일']
     tiers = []
     ranks = []
     for i in range(len(member)):
