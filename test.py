@@ -26,8 +26,10 @@ if __name__ == "__main__":
     now = date.today()
     yesterday = (date.today() - timedelta(1)).strftime('%Y-%m-%d')
     
+
     options = webdriver.ChromeOptions()
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
+
     driver = webdriver.Chrome(options=options)
 
     # driver 실행
@@ -40,10 +42,10 @@ if __name__ == "__main__":
 
     for i in range(len(member)):
         driver.get(url + member[i])
-        time.sleep(1)
+        driver.implicitly_wait(10)
 
-        html = driver.page_source
-        soup = BeautifulSoup(html, 'html.parser')
+        #html = driver.page_source
+        #soup = BeautifulSoup(html, 'html.parser')
         
         # category = soup.select('svg > rect')
         # /html/body/div[1]/div/div[4]/div/div[4]/div[3]/div[1]/svg/rect[1]
@@ -51,10 +53,10 @@ if __name__ == "__main__":
         # solved = soup.select('svg > text')
         # /html/body/div[1]/div/div[4]/div/div[4]/div[1]/div[2]/div/div/div/b
         
-        solved = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div/div[4]/div[1]/div[2]/div/div/div').text
-        day = int(driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div/div[4]/div[1]/div[2]/div/div/div/b').text)
-        tier = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[3]/div[1]/div[4]/span[2]/b').text
-        rank = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div/div[2]/div[1]/div[2]/b').text
+        solved = driver.find_element(By.XPATH, '//*[@id="__next"]/div[3]/div/div[4]/div[1]/div[2]/div/div/div').text
+        day = int(driver.find_element(By.XPATH, '//*[@id="__next"]/div[3]/div/div[4]/div[1]/div[2]/div/div/div/b').text)
+        tier = driver.find_element(By.XPATH, '//*[@id="__next"]/div[3]/div/div[2]/div[1]/div[1]/div[2]/span').text
+        rank = driver.find_element(By.XPATH, '//*[@id="__next"]/div[3]/div/div[2]/div[1]/div[2]/b').text
         rank = rank[1:]
         rank = rank.replace(',', '')
         print(rank)
