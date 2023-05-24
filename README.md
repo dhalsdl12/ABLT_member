@@ -5,6 +5,7 @@
 [권오민](https://solved.ac/profile/dhalsdl12) <br>
 [노현호](https://solved.ac/profile/shgusgh12) <br>
 [신시온](https://solved.ac/profile/shinsion) <br>
+[여윤동](https://solved.ac/profile/yund) <br>
 [이준형](https://solved.ac/profile/wns0865) <br>
 <br>
 
