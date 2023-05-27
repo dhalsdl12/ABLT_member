@@ -17,8 +17,14 @@ def extract_commit_data():
         st = streak[i]
         tier = tiers[i]
         rank = ranks[i]
+        ud = updown[i]
         content = f"<a href={link}>" + name + "    " + "</a>" + tier + "<br/>"
-        content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등</blockquote><br/>"
+        if ud > 0:
+            content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등 (👆"+ ud+ ")</blockquote><br/>"
+        elif ud == 0:
+            content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등 (-"+ ud+ ")</blockquote><br/>"
+        else:
+            content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등 (👇"+ ud+ ")</blockquote><br/>"
         upload_contents += content
 
     return upload_contents
@@ -51,6 +57,8 @@ if __name__ == "__main__":
     streak = ['현재 0일', '현재 0일', '현재 0일', '현재 0일', '현재 0일', '현재 0일']
     tiers = []
     ranks = []
+    updown = []
+
     for i in range(len(member)):
         driver.get(url + member[i])
         time.sleep(1)
@@ -78,8 +86,30 @@ if __name__ == "__main__":
         else:
             streak[i] = solved
 
-
     driver.close()
+
+    # 파일에 저장된 전날 랭킬을 가져와 비교
+    f = open('file.txt', 'r', encoding='UTF8')
+    dic = {}
+    
+    while True:
+        line = f.readline()
+        if not line:
+            break
+        n, r = line.strip().split()
+
+        dic[n] = int(r)
+    f.close()
+
+    for i in range(len(member)):
+        ytd = dic[names[i]]
+        now = ranks[i]
+        updown.append(ytd - now)
+    
+    f = open('file.txt', 'w', encoding='UTF8')
+    for i in range(len(member)):
+        f.writelines(names[i] + ' ' + str(ranks[i]) + '\n')
+    f.close()
     
     issue_title = f"어제({yesterday}) 알고리즘 문제 풀었어?"
     upload_contents = extract_commit_data()

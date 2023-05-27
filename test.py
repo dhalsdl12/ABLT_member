@@ -22,11 +22,6 @@ def extract_commit_data():
 
 
 if __name__ == "__main__":
-    repository_name = "ABLT_MEMBER"
-    now = date.today()
-    yesterday = (date.today() - timedelta(1)).strftime('%Y-%m-%d')
-    
-
     options = webdriver.ChromeOptions()
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
@@ -36,9 +31,10 @@ if __name__ == "__main__":
 
     url = 'https://solved.ac/'
     driver.get(url)
-    member = ['dhalsdl12','shgusgh12', 'shinsion', 'wns0865']
-    names = ['권오민', '노현호', '신시온', '이준형']
-    streak = ['현재 0일', '현재 0일', '현재 0일', '현재 0일', '현재 0일']
+    member = ['dhalsdl12','shgusgh12', 'shinsion', 'yund', 'wns0865']
+    names = ['권오민', '노현호', '신시온', '여윤동', '이준형']
+    streak = ['현재 0일', '현재 0일', '현재 0일', '현재 0일', '현재 0일', '현재 0일']
+    ranks = []
 
     for i in range(len(member)):
         driver.get(url + member[i])
@@ -59,7 +55,29 @@ if __name__ == "__main__":
         rank = driver.find_element(By.XPATH, '//*[@id="__next"]/div[3]/div/div[2]/div[1]/div[2]/b').text
         rank = rank[1:]
         rank = rank.replace(',', '')
-        print(rank)
+        ranks.append(int(rank))
 
     driver.close()
     
+    f = open('file.txt', 'r', encoding='UTF8')
+    dic = {}
+    
+    while True:
+        line = f.readline()
+        if not line:
+            break
+        n, r = line.strip().split()
+
+        dic[n] = int(r)
+    f.close()
+
+    for i in range(len(member)):
+        ytd = dic[names[i]]
+        now = ranks[i]
+        print(names[i], ytd - now)
+        print('👆👇')
+    
+    f = open('file.txt', 'w', encoding='UTF8')
+    for i in range(len(member)):
+        f.writelines(names[i] + ' ' + str(ranks[i]) + '\n')
+    f.close()
