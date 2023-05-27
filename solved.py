@@ -20,11 +20,11 @@ def extract_commit_data():
         ud = updown[i]
         content = f"<a href={link}>" + name + "    " + "</a>" + tier + "<br/>"
         if ud > 0:
-            content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등 (👆"+ ud + ")</blockquote><br/>"
+            content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등 (👆"+ str(ud) + ")</blockquote><br/>"
         elif ud == 0:
-            content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등 (-"+ ud + ")</blockquote><br/>"
+            content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등 (-"+ str(ud) + ")</blockquote><br/>"
         else:
-            content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등 (👇"+ (-1 * ud) + ")</blockquote><br/>"
+            content += "<blockquote data-ke-style=\"style2\">" + st + "<br/>" + rank + "등 (👇"+ str(-1 * ud) + ")</blockquote><br/>"
         upload_contents += content
 
     return upload_contents
