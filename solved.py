@@ -49,7 +49,7 @@ if __name__ == "__main__":
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument('--disable-gpu')
     service = ChromeService(executable_path=chrome_driver)
-    drive = webdriver.Chrome(service=service, options=chrome_options)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     # driver 실행
 
     url = 'https://solved.ac/'
