@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
 from bs4 import BeautifulSoup
 import time, os
 from selenium import webdriver
@@ -47,7 +48,8 @@ if __name__ == "__main__":
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument('--disable-gpu')
-    driver = webdriver.Chrome(chrome_driver, options=chrome_options)
+    service = ChromeService(executable_path=chrome_driver)
+    drive = webdriver.Chrome(service=service, options=chrome_options)
     # driver 실행
 
     url = 'https://solved.ac/'
